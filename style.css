@@ -1,0 +1,425 @@
+* {
+    font-size: 10px;
+    font-family: 'Fira Mono', monospace;
+    font-weight: 400;
+    line-height: 1.8;
+    /*font-weight: 400, 700;*/
+}
+
+h1 {
+    font-family: 'Fira Mono', monospace;
+    font-weight: 500;
+    margin: 20px;
+    text-align: center;
+    color: #ece8d9;
+}
+
+html {
+    background-color: #494949;
+}
+
+.skewed {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fffdf6;
+    z-index: -1;
+    transform: skewY(-20deg);
+    transform-origin: top left;
+}
+
+.main-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar {
+    margin: 0px auto;
+    display: flex;
+    width: 40em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.logo {
+    animation: glitch 1s linear infinite;
+    display: flex;
+    height: 65px;
+    width: 350px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background: #494949;
+    color: #fffdf6;
+    font-size: 24px;
+    font-family: 'Fira Mono', monospace;
+    letter-spacing: 0px;
+}
+
+@keyframes glitch {
+
+    2%,
+    64% {
+        transform: translate(2px, 0) skew(0deg);
+    }
+
+    4%,
+    60% {
+        transform: translate(-2px, 0) skew(0deg);
+    }
+
+    62% {
+        transform: translate(0, 0) skew(5deg);
+    }
+}
+
+.logo:before,
+.logo:after {
+    content: attr(title);
+    position: absolute;
+    left: 0;
+}
+
+.logo:before {
+    animation: glitchTop 1s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop {
+
+    2%,
+    64% {
+        transform: translate(2px, -2px);
+    }
+
+    4%,
+    60% {
+        transform: translate(-2px, 2px);
+    }
+
+    62% {
+        transform: translate(13px, -1px) skew(-13deg);
+    }
+}
+
+.logo:after {
+    animation: glitchBotom 1.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom {
+
+    2%,
+    64% {
+        transform: translate(-2px, 0);
+    }
+
+    4%,
+    60% {
+        transform: translate(-2px, 0);
+    }
+
+    62% {
+        transform: translate(-22px, 5px) skew(21deg);
+    }
+}
+
+.button-container {
+    height: 5em;
+    width: 40em;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.grid-container {
+    width: 40em;
+    height: 40em;
+    margin: 20px auto 0px;
+    display: flex;
+    flex-direction: column;
+    border: 4px solid #ece8d9;
+    box-shadow: 0 0 30px #494949;
+}
+
+.row-container {
+    display: flex;
+    flex: 1 1;
+}
+
+.cell {
+    background-color: #faf6e9;
+    display: flex;
+    flex: 1 1;
+    border: 1px solid #ece8d9;
+}
+
+button {
+    margin: 0 20px 0;
+    /*Button Text Style*/
+    font-family: 'Inconsolata', 'Helvetica', 'Arial', sans-serif;
+    font-size: inherit;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    /*Button Color & Border*/
+    border: 4px solid #494949;
+    color: #494949;
+    background: #fff;
+    outline: none;
+    /*Position, Display, Size*/
+    position: relative;
+    display: inline-block;
+    padding: 10px 5px 9px;
+    cursor: pointer;
+    width: auto;
+}
+
+button:after {
+    /*Make a:after be as big as button*/
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*Give a:after Border & Background color*/
+    border: 2px solid #494949;
+    background-color: #494949;
+    /*Decide Location of a:after..this gives a           bottom right shadow*/
+    left: 4px;
+    top: 4px;
+    /*Place a:after behind button*/
+    z-index: -1;
+    content: '';
+    /*Animation/Transition Speed*/
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+
+}
+
+button:hover {
+    top: 2px;
+    left: 2px;
+}
+
+button:hover:after {
+    top: -2px;
+    left: -2px;
+}
+
+.btn-reset {
+    margin: 0px;
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.label-text {
+    margin-left: 8px;
+    font-family: 'Inconsolata', 'Helvetica', 'Arial', sans-serif;
+    font-size: inherit;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.toggle {
+    isolation: isolate;
+    position: relative;
+    height: 24px;
+    width: 48px;
+    border-radius: 15px;
+    background: #d6d6d6;
+    overflow: hidden;
+}
+
+.toggle-inner {
+    z-index: 2;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    height: 22px;
+    width: 46px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.active-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200%;
+    background: #003dda;
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 0.05s linear 0.17s;
+}
+
+.toggle-state {
+    display: none;
+}
+
+.indicator {
+    height: 100%;
+    width: 200%;
+    background: white;
+    border-radius: 13px;
+    transform: translate3d(-75%, 0, 0);
+    transition: transform 0.35s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+}
+
+.toggle-state:checked~.active-bg {
+    transform: translate3d(-50%, 0, 0);
+}
+
+.toggle-state:checked~.toggle-inner .indicator {
+    transform: translate3d(25%, 0, 0);
+}
+
+@media (max-width: 400px) {
+    .top-bar {
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        animation: glitch 1s linear infinite;
+        margin: 30px 0px 0px;
+        display: flex;
+        height: 50px;
+        width: 250px;
+        align-items: center;
+        justify-content: center;
+        background: #494949;
+        color: #fffdf6;
+        font-size: 18px;
+        font-family: 'Fira Mono', monospace;
+        letter-spacing: 0px;
+    }
+
+    .button-container {
+        height: 50px;
+        width: 300px;
+        margin: 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .label-text {
+        margin-left: 5px;
+        font-family: 'Inconsolata', 'Helvetica', 'Arial', sans-serif;
+        font-size: 12px;
+        text-align: center;
+        font-weight: bold;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    .grid-container {
+        width: 300px;
+        height: 300px;
+        margin: 20px auto 0px;
+        display: flex;
+        flex-direction: column;
+        border: 4px solid #ece8d9;
+        box-shadow: 0 0 30px #494949;
+    }
+
+    button {
+        margin: 0 20px 0;
+        /*Button Text Style*/
+        font-family: 'Inconsolata', 'Helvetica', 'Arial', sans-serif;
+        font-size: 12px;
+        text-align: center;
+        font-weight: bold;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-decoration: none;
+        /*Button Color & Border*/
+        border: 4px solid #494949;
+        color: #494949;
+        background: #fff;
+        outline: none;
+        /*Position, Display, Size*/
+        position: relative;
+        display: inline-block;
+        padding: 8px 4px 7px;
+        cursor: pointer;
+        width: 70px;
+    }
+
+    button:after {
+        /*Make a:after be as big as button*/
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        /*Give a:after Border & Background color*/
+        border: 2px solid #494949;
+        background-color: #494949;
+        /*Decide Location of a:after..this gives a           bottom right shadow*/
+        left: 4px;
+        top: 4px;
+        /*Place a:after behind button*/
+        z-index: -1;
+        content: '';
+        /*Animation/Transition Speed*/
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+
+    }
+
+    button:hover {
+        top: 2px;
+        left: 2px;
+    }
+
+    button:hover:after {
+        top: -2px;
+        left: -2px;
+    }
+
+    .skewed {
+        position: absolute;
+        top: -200px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #fffdf6;
+        z-index: -1;
+        transform: skewY(-20deg);
+        transform-origin: top left;
+    }
+
+    h1 {
+        font-family: 'Fira Mono', monospace;
+        font-weight: 500;
+        margin: 20px;
+        text-align: center;
+        color: #ece8d9;
+        font-size: 12px;
+    }
+
+}
