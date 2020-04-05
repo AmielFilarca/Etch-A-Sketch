@@ -91,7 +91,11 @@ function createGrid(gridSize) {
             rowContainer.appendChild(cell)
         }
     }
-    blackColorGrid()
+    if (checkToggle()) {
+        randomColorGrid()
+    } else {
+        blackColorGrid()
+    }
 }
 
 function checkToggle() {
