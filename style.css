@@ -291,7 +291,7 @@ button:hover:after {
     transform: translate3d(25%, 0, 0);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     .top-bar {
         margin: 0px auto;
         display: flex;
@@ -401,7 +401,7 @@ button:hover:after {
 
     .skewed {
         position: absolute;
-        top: -200px;
+        top: -300px;
         bottom: 0;
         right: 0;
         left: 0;
