@@ -17,35 +17,14 @@ function generateRandomColor() {
     return randomColor;
 }
 
-function darkerShade(rgb) {
-    rgb = rgb.substring(4).split(")")[0].split(",");
-    let r = rgb[0];
-    let g = rgb[1];
-    let b = rgb[2];
-    if (r > 0) {
-        r -= r * 0.1;
-    }
-    if (g > 0) {
-        g -= g * 0.1;
-    }
-    if (b > 0) {
-        b -= b * 0.1;
-    }
-    return `rgb(${r},${g},${b})`;
-}
-
 function randomColorGrid() {
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
         cell.addEventListener('mouseover', (e) => {
-            if (!e.target.classList.contains(".colored")) {
-                e.target.classList.add(".colored");
-                let color = "#" + generateRandomColor();
-                e.target.style.backgroundColor = color;
-                gridContainer.style.boxShadow = '0 0 30px ' + color;
-            } else {
-                e.target.style.backgroundColor = darkerShade(e.target.style.backgroundColor);
-            }
+            let color = "#" + generateRandomColor();
+            e.target.style.backgroundColor = color;
+            gridContainer.style.boxShadow = '0 0 30px ' + color;
+            console.log(e)
         });
     });
 }
@@ -54,9 +33,9 @@ function blackColorGrid() {
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
         cell.addEventListener('mouseover', (e) => {
-            e.target.classList.remove(".colored");
             e.target.style.backgroundColor = '#494949';
             gridContainer.style.boxShadow = '0 0 30px #494949';
+            console.log(e)
         });
     });
 }
@@ -65,6 +44,7 @@ resetButton.addEventListener('click', (e) => {
     const cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
         cell.style.backgroundColor = '#faf6e9'
+        console.log(e)
     })
     resetGrid()
     createGrid(gridSize)
@@ -79,6 +59,7 @@ resizeButton.addEventListener('click', (e) => {
     const cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
         cell.style.backgroundColor = '#faf6e9'
+        console.log(e)
     })
     resetGrid()
     gridSize = prompt('Enter grid size: ')
