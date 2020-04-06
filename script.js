@@ -44,9 +44,7 @@ function randomColorGrid() {
                 e.target.style.backgroundColor = color;
                 gridContainer.style.boxShadow = '0 0 30px ' + color;
             } else {
-                let color = darkerShade(e.target.style.backgroundColor)
-                e.target.style.backgroundColor = color;
-                gridContainer.style.boxShadow = '0 0 30px ' + color;
+                e.target.style.backgroundColor = darkerShade(e.target.style.backgroundColor);
             }
         });
     });
@@ -56,6 +54,7 @@ function blackColorGrid() {
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
         cell.addEventListener('mouseover', (e) => {
+            e.target.classList.remove(".colored");
             e.target.style.backgroundColor = '#494949';
             gridContainer.style.boxShadow = '0 0 30px #494949';
         });
@@ -87,8 +86,6 @@ resizeButton.addEventListener('click', (e) => {
 })
 
 rgbToggle.addEventListener('click', (e) => {
-    resetGrid()
-    createGrid(gridSize)
     if (checkToggle()) {
         randomColorGrid()
     } else {
